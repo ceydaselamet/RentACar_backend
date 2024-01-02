@@ -80,7 +80,7 @@
             dataGridView1.ColumnHeadersHeight = 29;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { carIdDataGridViewTextBoxColumn1, brandNameDataGridViewTextBoxColumn1, colorNameDataGridViewTextBoxColumn1, modelNameDataGridViewTextBoxColumn1, fuelTypeNameDataGridViewTextBoxColumn1, gearTypeNameDataGridViewTextBoxColumn1, modelYearDataGridViewTextBoxColumn1, dailyPriceDataGridViewTextBoxColumn1, carImageDataGridViewTextBoxColumn1, ısSuitableDataGridViewCheckBoxColumn1 });
             dataGridView1.DataSource = carDetailDtoBindingSource;
-            dataGridView1.Location = new Point(458, 369);
+            dataGridView1.Location = new Point(468, 353);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(872, 265);
@@ -285,7 +285,7 @@
             button3.BackColor = SystemColors.HotTrack;
             button3.Enabled = false;
             button3.ForeColor = SystemColors.ActiveCaptionText;
-            button3.Location = new Point(69, 602);
+            button3.Location = new Point(69, 562);
             button3.Name = "button3";
             button3.Size = new Size(97, 32);
             button3.TabIndex = 20;
@@ -297,7 +297,7 @@
             // 
             button2.BackColor = SystemColors.ActiveCaption;
             button2.Enabled = false;
-            button2.Location = new Point(134, 541);
+            button2.Location = new Point(134, 501);
             button2.Name = "button2";
             button2.Size = new Size(102, 34);
             button2.TabIndex = 19;
@@ -308,7 +308,7 @@
             // button_1
             // 
             button_1.BackColor = SystemColors.ActiveCaption;
-            button_1.Location = new Point(17, 541);
+            button_1.Location = new Point(17, 501);
             button_1.Name = "button_1";
             button_1.Size = new Size(97, 34);
             button_1.TabIndex = 18;
@@ -402,14 +402,14 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1352, 100);
+            panel1.Size = new Size(1361, 100);
             panel1.TabIndex = 24;
             // 
             // ManageCars
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1352, 665);
+            ClientSize = new Size(1361, 641);
             Controls.Add(panel1);
             Controls.Add(carImage);
             Controls.Add(pictureBox1);

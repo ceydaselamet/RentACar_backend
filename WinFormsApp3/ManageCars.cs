@@ -4,20 +4,7 @@ using DataAccess.Concrete;
 using Entities.Concrete;
 using Entities.DTOs;
 using Firebase.Storage;
-using Microsoft.AspNetCore.Http.Features.Authentication;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace WinFormsApp3
 {
@@ -126,6 +113,7 @@ namespace WinFormsApp3
             MessageBox.Show("Araç başarıyla eklendi.");
             LoadData();
             urlInLocale = "";
+            pictureBox1.Image = Image.FromFile("C:\\Users\\Samet\\Desktop\\car-default.jpg");
         }
 
         //Düzenleme
@@ -151,6 +139,7 @@ namespace WinFormsApp3
             MessageBox.Show("Araç başarıyla güncellendi.");
             LoadData();
             urlInLocale = "";
+            pictureBox1.Image = Image.FromFile("C:\\Users\\Samet\\Desktop\\car-default.jpg");
         }
 
         // SEÇİLİ ARABAYI SİL
@@ -243,7 +232,13 @@ namespace WinFormsApp3
 
             task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %");
 
-            downloadUrl = await task;
+            try
+            {
+                downloadUrl = await task;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             stream.Close();
             stream.Dispose();
@@ -274,7 +269,8 @@ namespace WinFormsApp3
         private void selectCarImageButton_Click(object sender, EventArgs e)
         {
             urlInLocale = SelectImage();
-            pictureBox1.Image = Image.FromFile(urlInLocale);
+            if(!urlInLocale.Equals(""))
+                pictureBox1.Image = Image.FromFile(urlInLocale);
         }
 
         private void addButtonActive(object sender, EventArgs e)
