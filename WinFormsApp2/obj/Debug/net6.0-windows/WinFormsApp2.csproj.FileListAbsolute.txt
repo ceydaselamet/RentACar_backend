@@ -205,3 +205,6 @@ C:\Users\win10\Desktop\RentACar\WinFormsApp2\obj\Debug\net6.0-windows\refint\Win
 C:\Users\win10\Desktop\RentACar\WinFormsApp2\obj\Debug\net6.0-windows\WinFormsApp2.pdb
 C:\Users\win10\Desktop\RentACar\WinFormsApp2\obj\Debug\net6.0-windows\WinFormsApp2.genruntimeconfig.cache
 C:\Users\win10\Desktop\RentACar\WinFormsApp2\obj\Debug\net6.0-windows\ref\WinFormsApp2.dll
+C:\Users\win10\Desktop\RentACar\RentACar_backend\WinFormsApp2\obj\Debug\net6.0-windows\WinFormsApp2.dll
+C:\Users\win10\Desktop\RentACar\RentACar_backend\WinFormsApp2\obj\Debug\net6.0-windows\refint\WinFormsApp2.dll
+C:\Users\win10\Desktop\RentACar\RentACar_backend\WinFormsApp2\obj\Debug\net6.0-windows\WinFormsApp2.pdb

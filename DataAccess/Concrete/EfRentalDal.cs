@@ -23,9 +23,6 @@ namespace DataAccess.Concrete
                              join car in context.Cars
                              on rental.CarId equals car.CarId
 
-                             join brand in context.Brands
-                             on car.BrandId equals brand.BrandId
-
                              join customer in context.Customers
                              on rental.CustomerId equals customer.CustomerId
 
@@ -33,13 +30,12 @@ namespace DataAccess.Concrete
                              on customer.UserId equals user.UserId
 
                              join status in context.Statuses
-                             on rental.CarStatusId equals status.StatusId
+                             on rental.StatusId equals status.StatusId
 
                              select new RentalDetailDto
                              {
                                  CarId = car.CarId,
-                                 BrandName = brand.BrandName,
-                                 FullName = user.FirstName + user.LastName,
+                                 FullName = user.FirstName + " " + user.LastName,
                                  RentDate = Convert.ToDateTime(rental.RentDate),
                                  ReturnDate = Convert.ToDateTime(rental.ReturnDate),
                                  CarStatus = status.CarStatus

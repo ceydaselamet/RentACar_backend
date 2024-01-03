@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Concrete;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,40 +16,28 @@ namespace WinFormsApp3
 {
     public partial class ManageRentals : Form
     {
-        private IRentalService _rentalService;
-        private IStatusService _statusService;
-        private IBrandService _brandService;
+        IRentalService _rentalService;
+        IStatusService _statusService;
+        ICustomerService _customerService;
         public ManageRentals()
         {
             InitializeComponent();
             _rentalService = new RentalManager(new EfRentalDal());
             _statusService = new StatusManager(new EfStatusDal());
-            _brandService = new BrandManager(new EfBrandDal());
+            _customerService = new CustomerManager(new EfCustomerDal());
 
             LoadData();
-            LoadCarStatus();
-            LoadBrandCombobox();
-        }
+            LoadCarStatuses();
+        }   
 
         private async void LoadData()
         {
             var rentalDetails = _rentalService.GetRentalDetails();
             dataGridView1.DataSource = rentalDetails.Data;
-
-            if (rentalDetails.Data.Count > 0)
-            {
-                var firstRental = rentalDetails.Data.First();
-                rentDate.Value = firstRental.RentDate;
-
-                if (rentalDetails.Data.Any(r => r.ReturnDate.HasValue))
-                {
-                    var firstReturnedRental = rentalDetails.Data.First(r => r.ReturnDate.HasValue);
-                    returnDate.Value = firstReturnedRental.ReturnDate.Value;
-                }
-            }
+            
         }
 
-        private async void LoadCarStatus()
+        private async void LoadCarStatuses()
         {
             var carStatuses = _statusService.GetAll();
 
@@ -56,19 +45,54 @@ namespace WinFormsApp3
             carStatus.DisplayMember = "CarStatus";
             carStatus.ValueMember = "StatusId";
         }
-
-        private async void LoadBrandCombobox()
+        //Ekleme
+        private void button_1_Click(object sender, EventArgs e)
         {
-            var brands = _brandService.GetAll();
 
-            brandName.DataSource = brands.Data;
-            brandName.DisplayMember = "BrandName";
-            brandName.ValueMember = "BrandId";
-        }
-
-        private void getRentalDetails_Click(object sender, EventArgs e)
-        {
+            Rental addToRental = new Rental()
+            {
+                CarId = int.TryParse(carId.Text, out int result) ? result : -1,
+                CustomerId = int.TryParse(fullName.Text, out int customerResult) ? customerResult : -1,
+                RentDate = rentDate.Value.ToString("yyyy-MM-dd HH:mm:ss"),
+                ReturnDate = returnDate.Value.ToString("yyyy-MM-dd HH:mm:ss"),
+                StatusId = Convert.ToInt32(carStatus.SelectedValue)
+            };
+            _rentalService.Add(addToRental);
+            MessageBox.Show("Kiralama işlemi başarıyla gerçekleşti.");
             LoadData();
         }
+
+        //Düzenleme
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Rental updateToRental = new Rental()
+            {
+                CarId = int.TryParse(carId.Text, out int result) ? result : -1,
+                CustomerId = int.TryParse(fullName.Text, out int customerResult) ? customerResult : -1,
+                RentDate = rentDate.Value.ToString("yyyy-MM-dd HH:mm:ss"),
+                ReturnDate = returnDate.Value.ToString("yyyy-MM-dd HH:mm:ss"),
+                StatusId = Convert.ToInt32(carStatus.SelectedValue)
+            };
+            _rentalService.Update(updateToRental);
+            MessageBox.Show("Kiralama işlemi güncellendi");
+            LoadData();
+        }
+        private async Task FillFormFromGridAsync(int e)
+        {
+            if (e >= 0 && e < dataGridView1.Rows.Count)
+            {
+                carId.Text = dataGridView1.Rows[e].Cells[0].Value.ToString();
+                fullName.Text = dataGridView1.Rows[e].Cells[1].Value.ToString();
+                rentDate.Text = dataGridView1.Rows[e].Cells[3].Value.ToString();
+                returnDate.Text = dataGridView1.Rows[e].Cells[2].Value.ToString();
+                carStatus.Text = dataGridView1.Rows[e].Cells[4].Value.ToString();
+            }
+        }
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            FillFormFromGridAsync(e.RowIndex);
+        }
+
+
     }
 }

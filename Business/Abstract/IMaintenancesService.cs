@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Business.Abstract
         IDataResult<List<Maintenance>> GetAll();
         IDataResult<Maintenance> GetById(int id);
         IDataResult<List<Maintenance>> GetByCarId(int carId);
+        IDataResult<List<MaintenanceDetailDto>> GetMeintenanceDetails();
 
         IResult Add(Maintenance maintenance);
         IResult Update(Maintenance maintenance);
