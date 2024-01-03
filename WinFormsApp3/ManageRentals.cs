@@ -28,27 +28,29 @@ namespace WinFormsApp3
 
             LoadData();
             LoadCarStatuses();
-        }   
+        }
 
         private async void LoadData()
         {
             var rentalDetails = _rentalService.GetRentalDetails();
             dataGridView1.DataSource = rentalDetails.Data;
-            
+
         }
 
         private async void LoadCarStatuses()
         {
+            /*
             var carStatuses = _statusService.GetAll();
 
             carStatus.DataSource = carStatuses.Data;
             carStatus.DisplayMember = "CarStatus";
             carStatus.ValueMember = "StatusId";
+            */
         }
         //Ekleme
         private void button_1_Click(object sender, EventArgs e)
         {
-
+            /*
             Rental addToRental = new Rental()
             {
                 CarId = int.TryParse(carId.Text, out int result) ? result : -1,
@@ -59,12 +61,14 @@ namespace WinFormsApp3
             };
             _rentalService.Add(addToRental);
             MessageBox.Show("Kiralama işlemi başarıyla gerçekleşti.");
+            */
             LoadData();
         }
 
         //Düzenleme
         private void button4_Click(object sender, EventArgs e)
         {
+            /*
             Rental updateToRental = new Rental()
             {
                 CarId = int.TryParse(carId.Text, out int result) ? result : -1,
@@ -75,10 +79,13 @@ namespace WinFormsApp3
             };
             _rentalService.Update(updateToRental);
             MessageBox.Show("Kiralama işlemi güncellendi");
+            */
             LoadData();
         }
+
         private async Task FillFormFromGridAsync(int e)
         {
+            /*
             if (e >= 0 && e < dataGridView1.Rows.Count)
             {
                 carId.Text = dataGridView1.Rows[e].Cells[0].Value.ToString();
@@ -87,7 +94,9 @@ namespace WinFormsApp3
                 returnDate.Text = dataGridView1.Rows[e].Cells[2].Value.ToString();
                 carStatus.Text = dataGridView1.Rows[e].Cells[4].Value.ToString();
             }
+            */
         }
+
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             FillFormFromGridAsync(e.RowIndex);

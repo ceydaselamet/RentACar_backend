@@ -29,14 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            fullName = new TextBox();
-            label3 = new Label();
-            carStatus = new ComboBox();
-            returnDate = new DateTimePicker();
-            label2 = new Label();
-            label1 = new Label();
-            rentDate = new DateTimePicker();
-            carId = new TextBox();
             dataGridView1 = new DataGridView();
             carIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fullNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -44,78 +36,13 @@
             returnDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             carStatusDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             rentalDetailDtoBindingSource = new BindingSource(components);
-            button3 = new Button();
             button4 = new Button();
             button_1 = new Button();
+            label1 = new Label();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rentalDetailDtoBindingSource).BeginInit();
             SuspendLayout();
-            // 
-            // fullName
-            // 
-            fullName.Location = new Point(44, 191);
-            fullName.Name = "fullName";
-            fullName.Size = new Size(241, 27);
-            fullName.TabIndex = 17;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(35, 480);
-            label3.Name = "label3";
-            label3.Size = new Size(146, 25);
-            label3.TabIndex = 16;
-            label3.Text = "Onay Durumu : ";
-            // 
-            // carStatus
-            // 
-            carStatus.FormattingEnabled = true;
-            carStatus.Location = new Point(35, 533);
-            carStatus.Name = "carStatus";
-            carStatus.Size = new Size(250, 28);
-            carStatus.TabIndex = 15;
-            // 
-            // returnDate
-            // 
-            returnDate.Location = new Point(35, 426);
-            returnDate.Name = "returnDate";
-            returnDate.Size = new Size(250, 27);
-            returnDate.TabIndex = 14;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(35, 373);
-            label2.Name = "label2";
-            label2.Size = new Size(132, 25);
-            label2.TabIndex = 13;
-            label2.Text = "Teslim Tarihi : ";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(35, 254);
-            label1.Name = "label1";
-            label1.Size = new Size(240, 25);
-            label1.TabIndex = 12;
-            label1.Text = "Kiralama Başlangıç Tarihi : ";
-            // 
-            // rentDate
-            // 
-            rentDate.Location = new Point(35, 304);
-            rentDate.Name = "rentDate";
-            rentDate.Size = new Size(250, 27);
-            rentDate.TabIndex = 11;
-            // 
-            // carId
-            // 
-            carId.Location = new Point(44, 131);
-            carId.Name = "carId";
-            carId.Size = new Size(104, 27);
-            carId.TabIndex = 10;
             // 
             // dataGridView1
             // 
@@ -123,11 +50,11 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { carIdDataGridViewTextBoxColumn, fullNameDataGridViewTextBoxColumn, rentDateDataGridViewTextBoxColumn, returnDateDataGridViewTextBoxColumn, carStatusDataGridViewTextBoxColumn });
             dataGridView1.DataSource = rentalDetailDtoBindingSource;
-            dataGridView1.Location = new Point(409, 131);
+            dataGridView1.Location = new Point(147, 126);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(930, 416);
+            dataGridView1.Size = new Size(951, 354);
             dataGridView1.TabIndex = 20;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
             // 
@@ -175,59 +102,57 @@
             // 
             rentalDetailDtoBindingSource.DataSource = typeof(Entities.DTOs.RentalDetailDto);
             // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.HotTrack;
-            button3.ForeColor = SystemColors.ActiveCaptionText;
-            button3.Location = new Point(104, 640);
-            button3.Margin = new Padding(3, 4, 3, 4);
-            button3.Name = "button3";
-            button3.Size = new Size(111, 38);
-            button3.TabIndex = 26;
-            button3.Text = "Sil";
-            button3.UseVisualStyleBackColor = false;
-            // 
             // button4
             // 
             button4.BackColor = SystemColors.ActiveCaption;
-            button4.Location = new Point(179, 568);
-            button4.Margin = new Padding(3, 4, 3, 4);
+            button4.Location = new Point(606, 506);
             button4.Name = "button4";
-            button4.Size = new Size(117, 40);
+            button4.Size = new Size(102, 34);
             button4.TabIndex = 25;
-            button4.Text = "Düzenle";
+            button4.Text = "Reddet";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
             // button_1
             // 
             button_1.BackColor = SystemColors.ActiveCaption;
-            button_1.Location = new Point(45, 568);
-            button_1.Margin = new Padding(3, 4, 3, 4);
+            button_1.Location = new Point(478, 506);
             button_1.Name = "button_1";
-            button_1.Size = new Size(111, 40);
+            button_1.Size = new Size(97, 34);
             button_1.TabIndex = 24;
-            button_1.Text = "Ekle";
+            button_1.Text = "Onayla";
             button_1.UseVisualStyleBackColor = false;
             button_1.Click += button_1_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Rockwell Extra Bold", 30F, FontStyle.Italic, GraphicsUnit.Point);
+            label1.Location = new Point(385, 45);
+            label1.Name = "label1";
+            label1.Size = new Size(409, 47);
+            label1.TabIndex = 26;
+            label1.Text = "Manage Rentals";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Bekleniyor", "Onaylandı", "Reddedildi" });
+            comboBox1.Location = new Point(977, 95);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 25);
+            comboBox1.TabIndex = 27;
+            // 
             // ManageRentals
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1351, 681);
-            Controls.Add(button3);
+            ClientSize = new Size(1182, 579);
+            Controls.Add(comboBox1);
+            Controls.Add(label1);
             Controls.Add(button4);
             Controls.Add(button_1);
             Controls.Add(dataGridView1);
-            Controls.Add(fullName);
-            Controls.Add(label3);
-            Controls.Add(carStatus);
-            Controls.Add(returnDate);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(rentDate);
-            Controls.Add(carId);
             Name = "ManageRentals";
             Text = "ManageRentals";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -237,15 +162,6 @@
         }
 
         #endregion
-
-        private TextBox fullName;
-        private Label label3;
-        private ComboBox carStatus;
-        private DateTimePicker returnDate;
-        private Label label2;
-        private Label label1;
-        private DateTimePicker rentDate;
-        private TextBox carId;
         private DataGridView dataGridView1;
         private BindingSource rentalDetailDtoBindingSource;
         private DataGridViewTextBoxColumn carIdDataGridViewTextBoxColumn;
@@ -253,8 +169,9 @@
         private DataGridViewTextBoxColumn rentDateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn returnDateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn carStatusDataGridViewTextBoxColumn;
-        private Button button3;
         private Button button4;
         private Button button_1;
+        private Label label1;
+        private ComboBox comboBox1;
     }
 }
