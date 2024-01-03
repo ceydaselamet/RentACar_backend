@@ -33,11 +33,12 @@
             ManageRentalsButton = new Button();
             ManageUsersButton = new Button();
             label1 = new Label();
+            ManageMaintenancesButton = new Button();
             SuspendLayout();
             // 
             // ManageCarsButton
             // 
-            ManageCarsButton.Location = new Point(115, 204);
+            ManageCarsButton.Location = new Point(37, 204);
             ManageCarsButton.Name = "ManageCarsButton";
             ManageCarsButton.Size = new Size(144, 122);
             ManageCarsButton.TabIndex = 0;
@@ -47,7 +48,7 @@
             // 
             // ManageRentalsButton
             // 
-            ManageRentalsButton.Location = new Point(328, 204);
+            ManageRentalsButton.Location = new Point(227, 204);
             ManageRentalsButton.Name = "ManageRentalsButton";
             ManageRentalsButton.Size = new Size(144, 122);
             ManageRentalsButton.TabIndex = 2;
@@ -57,7 +58,7 @@
             // 
             // ManageUsersButton
             // 
-            ManageUsersButton.Location = new Point(528, 204);
+            ManageUsersButton.Location = new Point(604, 204);
             ManageUsersButton.Name = "ManageUsersButton";
             ManageUsersButton.Size = new Size(144, 122);
             ManageUsersButton.TabIndex = 3;
@@ -75,6 +76,16 @@
             label1.TabIndex = 4;
             label1.Text = "RENT A CAR";
             // 
+            // ManageMaintenancesButton
+            // 
+            ManageMaintenancesButton.Location = new Point(427, 204);
+            ManageMaintenancesButton.Name = "ManageMaintenancesButton";
+            ManageMaintenancesButton.Size = new Size(144, 122);
+            ManageMaintenancesButton.TabIndex = 5;
+            ManageMaintenancesButton.Text = "Manage Maintenances";
+            ManageMaintenancesButton.UseVisualStyleBackColor = true;
+            ManageMaintenancesButton.Click += ManageMaintenancesButton_Click;
+            // 
             // MainScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -82,6 +93,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(ManageMaintenancesButton);
             Controls.Add(label1);
             Controls.Add(ManageUsersButton);
             Controls.Add(ManageRentalsButton);
@@ -98,5 +110,6 @@
         private Button ManageRentalsButton;
         private Button ManageUsersButton;
         private Label label1;
+        private Button ManageMaintenancesButton;
     }
 }

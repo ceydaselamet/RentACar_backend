@@ -34,5 +34,11 @@ namespace WinFormsApp3
             ManageUsers manageUsers = new ManageUsers();
             manageUsers.Show();
         }
+
+        private void ManageMaintenancesButton_Click(object sender, EventArgs e)
+        {
+            ManageMaintenances manageMaintenances = new ManageMaintenances();
+            manageMaintenances.Show();
+        }
     }
 }
