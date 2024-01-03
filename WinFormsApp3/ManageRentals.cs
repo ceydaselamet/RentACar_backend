@@ -55,7 +55,7 @@ namespace WinFormsApp3
                 CustomerId = int.TryParse(fullName.Text, out int customerResult) ? customerResult : -1,
                 RentDate = rentDate.Value.ToString("yyyy-MM-dd HH:mm:ss"),
                 ReturnDate = returnDate.Value.ToString("yyyy-MM-dd HH:mm:ss"),
-                StatusId = Convert.ToInt32(carStatus.SelectedValue)
+                CarStatusId = Convert.ToInt32(carStatus.SelectedValue)
             };
             _rentalService.Add(addToRental);
             MessageBox.Show("Kiralama işlemi başarıyla gerçekleşti.");
@@ -71,7 +71,7 @@ namespace WinFormsApp3
                 CustomerId = int.TryParse(fullName.Text, out int customerResult) ? customerResult : -1,
                 RentDate = rentDate.Value.ToString("yyyy-MM-dd HH:mm:ss"),
                 ReturnDate = returnDate.Value.ToString("yyyy-MM-dd HH:mm:ss"),
-                StatusId = Convert.ToInt32(carStatus.SelectedValue)
+                CarStatusId = Convert.ToInt32(carStatus.SelectedValue)
             };
             _rentalService.Update(updateToRental);
             MessageBox.Show("Kiralama işlemi güncellendi");

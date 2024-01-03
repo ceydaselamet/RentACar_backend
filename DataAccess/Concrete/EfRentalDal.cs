@@ -13,7 +13,6 @@ namespace DataAccess.Concrete
 {
     public class EfRentalDal : EfEntityRepositoryBase<Rental, RentACarContext>, IRentalDal
     {
-
         public List<RentalDetailDto> GetRentalDetails(Expression<Func<RentalDetailDto, bool>> filter = null)
         {
             using (RentACarContext context = new RentACarContext())
@@ -30,7 +29,7 @@ namespace DataAccess.Concrete
                              on customer.UserId equals user.UserId
 
                              join status in context.Statuses
-                             on rental.StatusId equals status.StatusId
+                             on rental.CarStatusId equals status.StatusId
 
                              select new RentalDetailDto
                              {
