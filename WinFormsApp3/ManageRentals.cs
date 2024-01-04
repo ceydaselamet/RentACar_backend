@@ -39,13 +39,13 @@ namespace WinFormsApp3
 
         private async void LoadCarStatuses()
         {
-            /*
+
             var carStatuses = _statusService.GetAll();
 
             carStatus.DataSource = carStatuses.Data;
             carStatus.DisplayMember = "CarStatus";
             carStatus.ValueMember = "StatusId";
-            */
+
         }
         //Ekleme
         private void button_1_Click(object sender, EventArgs e)

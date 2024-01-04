@@ -39,7 +39,7 @@
             button4 = new Button();
             button_1 = new Button();
             label1 = new Label();
-            comboBox1 = new ComboBox();
+            carStatus = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rentalDetailDtoBindingSource).BeginInit();
             SuspendLayout();
@@ -134,21 +134,21 @@
             label1.TabIndex = 26;
             label1.Text = "Manage Rentals";
             // 
-            // comboBox1
+            // carStatus
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Bekleniyor", "Onaylandı", "Reddedildi" });
-            comboBox1.Location = new Point(977, 95);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 25);
-            comboBox1.TabIndex = 27;
+            carStatus.FormattingEnabled = true;
+            carStatus.Items.AddRange(new object[] { "Bekleniyor", "Onaylandı", "Reddedildi" });
+            carStatus.Location = new Point(977, 95);
+            carStatus.Name = "carStatus";
+            carStatus.Size = new Size(121, 25);
+            carStatus.TabIndex = 27;
             // 
             // ManageRentals
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 579);
-            Controls.Add(comboBox1);
+            Controls.Add(carStatus);
             Controls.Add(label1);
             Controls.Add(button4);
             Controls.Add(button_1);
@@ -172,6 +172,6 @@
         private Button button4;
         private Button button_1;
         private Label label1;
-        private ComboBox comboBox1;
+        private ComboBox carStatus;
     }
 }
