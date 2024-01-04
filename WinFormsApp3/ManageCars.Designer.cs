@@ -274,6 +274,7 @@
             carId.Size = new Size(134, 25);
             carId.TabIndex = 1;
             carId.Text = "Araç Id";
+            carId.Click += addButtonActive;
             // 
             // brandName
             // 
@@ -282,6 +283,7 @@
             brandName.Name = "brandName";
             brandName.Size = new Size(133, 25);
             brandName.TabIndex = 2;
+            brandName.Click += addButtonActive;
             // 
             // carModelName
             // 
@@ -290,6 +292,7 @@
             carModelName.Name = "carModelName";
             carModelName.Size = new Size(133, 25);
             carModelName.TabIndex = 3;
+            carModelName.Click += addButtonActive;
             // 
             // button3
             // 
@@ -334,6 +337,7 @@
             dailyPrice.PlaceholderText = "Günlük Fiyatı";
             dailyPrice.Size = new Size(133, 25);
             dailyPrice.TabIndex = 17;
+            dailyPrice.Click += addButtonActive;
             // 
             // modelYear
             // 
@@ -342,6 +346,7 @@
             modelYear.PlaceholderText = "Model Yılı";
             modelYear.Size = new Size(132, 25);
             modelYear.TabIndex = 16;
+            modelYear.Click += addButtonActive;
             // 
             // gearTypeName
             // 
@@ -351,6 +356,7 @@
             gearTypeName.Name = "gearTypeName";
             gearTypeName.Size = new Size(133, 25);
             gearTypeName.TabIndex = 15;
+            gearTypeName.Click += addButtonActive;
             // 
             // carDetailDtoBindingSource1
             // 
@@ -364,6 +370,7 @@
             fuelTypeName.Name = "fuelTypeName";
             fuelTypeName.Size = new Size(133, 25);
             fuelTypeName.TabIndex = 14;
+            fuelTypeName.Click += addButtonActive;
             // 
             // colorName
             // 
@@ -373,6 +380,7 @@
             colorName.Name = "colorName";
             colorName.Size = new Size(133, 25);
             colorName.TabIndex = 13;
+            colorName.Click += addButtonActive;
             // 
             // pictureBox1
             // 

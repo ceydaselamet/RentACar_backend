@@ -280,8 +280,8 @@ namespace WinFormsApp3
         private void addButtonActive(object sender, EventArgs e)
         {
             button_1.Enabled = true;
-            button3.Enabled = false;
-            button2.Enabled = false;
+            button3.Enabled = true;
+            button2.Enabled = true;
         }
     }
 }
