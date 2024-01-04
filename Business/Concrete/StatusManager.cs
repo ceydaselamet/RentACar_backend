@@ -42,6 +42,11 @@ namespace Business.Concrete
             return new SuccessDataResult<Status>(_statusDal.Get(b => b.StatusId == id));
         }
 
+        public IDataResult<Status> GetByName(string carStatus)
+        {
+            return new SuccessDataResult<Status>(_statusDal.Get(s => s.CarStatus == carStatus));
+        }
+
         public IResult Update(Status Status)
         {
             _statusDal.Update(Status);
