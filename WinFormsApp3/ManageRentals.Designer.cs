@@ -50,6 +50,9 @@
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(1278, 354);
             dataGridView1.TabIndex = 20;
+            dataGridView1.CellMouseClick += dataGridView1_SelectionChanged;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // 
             // RentalId
             // 

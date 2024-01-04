@@ -48,25 +48,40 @@ namespace WinFormsApp3
             */
             //LoadData();
             //LoadCarStatuses();
-
-            LoadDataCommand(selected);
+            whileLoadAsync();
         }
-        private int selected = 3;
+
+        private async Task whileLoadAsync()
+        {
+            while(true)
+            {
+                LoadDataCommand(selectedComboBoxIndex);
+                await Task.Delay(5000);
+            }
+        }
+
+        private int selectedComboBoxIndex = 3;
         private void SelectedComboBox(object sender, EventArgs e)
         {
-            selected = carStatus.SelectedIndex + 1;
-            LoadDataCommand(selected);
+            selectedComboBoxIndex = carStatus.SelectedIndex + 1;
+            LoadDataCommand(selectedComboBoxIndex);
         }
 
+        SqlConnection connection = new SqlConnection("Data Source=WIN-47H6MAU8L06;User ID=sa;Password=Rentacar43;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+        SqlCommand sqlCommand;
+        SqlDataAdapter adapter;
+        DataTable dataTable;
         void LoadDataCommand(int selected)
         {
-            SqlConnection connection = new SqlConnection("Data Source=WIN-47H6MAU8L06;User ID=sa;Password=Rentacar43;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-            SqlCommand sqlCommand = new SqlCommand("SELECT \r\n    rentals.RentalId, \r\n    rentals.CustomerId, \r\n\tusers.FirstName + ' ' + users.LastName AS Customer,\r\n\tusers.Email,\r\n\trentals.CarId,\r\n    brands.BrandName + ' ' + carmodels.ModelName + ' ' + CAST(cars.ModelYear AS nvarchar(10)) AS CarTitle,\r\n\tDATEDIFF(DAY, PARSE(RentDate AS datetime USING 'en-US'),PARSE(ReturnDate AS datetime USING 'en-US')) + 1 AS TotalRentDays,\r\n\tcars.DailyPrice,\r\n\tcolors.ColorName,\r\n    rentals.RentDate, \r\n    rentals.ReturnDate,\r\n\tstatuses.CarStatus\r\nFROM \r\n    rentals rentals\r\nJOIN \r\n    cars cars ON rentals.CarId = cars.CarId\r\nJOIN \r\n    brands brands ON cars.BrandId = brands.BrandId\r\nJOIN\r\n\tcolors colors ON colors.ColorId = cars.ColorId\r\nJOIN\r\n\tstatuses statuses ON statuses.StatusId = rentals.CarStatusId\r\nJOIN\r\n\tcarmodels carmodels ON carmodels.ModelId = cars.ModelId\r\nJOIN \r\n\tusers users ON users.UserId = rentals.CustomerId\r\nWHERE rentals.CarStatusId = " + selected + "\r\nORDER BY RentalId DESC\r\n", connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand);
-            DataTable dataTable = new DataTable();
+            sqlCommand = new SqlCommand("SELECT \r\n    rentals.RentalId, \r\n    rentals.CustomerId, \r\n\tusers.FirstName + ' ' + users.LastName AS Customer,\r\n\tusers.Email,\r\n\trentals.CarId,\r\n    brands.BrandName + ' ' + carmodels.ModelName + ' ' + CAST(cars.ModelYear AS nvarchar(10)) AS CarTitle,\r\n\tDATEDIFF(DAY, PARSE(RentDate AS datetime USING 'en-US'),PARSE(ReturnDate AS datetime USING 'en-US')) + 1 AS TotalRentDays,\r\n\tcars.DailyPrice,\r\n\tcolors.ColorName,\r\n    rentals.RentDate, \r\n    rentals.ReturnDate,\r\n\tstatuses.CarStatus\r\nFROM \r\n    rentals rentals\r\nJOIN \r\n    cars cars ON rentals.CarId = cars.CarId\r\nJOIN \r\n    brands brands ON cars.BrandId = brands.BrandId\r\nJOIN\r\n\tcolors colors ON colors.ColorId = cars.ColorId\r\nJOIN\r\n\tstatuses statuses ON statuses.StatusId = rentals.CarStatusId\r\nJOIN\r\n\tcarmodels carmodels ON carmodels.ModelId = cars.ModelId\r\nJOIN \r\n\tusers users ON users.UserId = rentals.CustomerId\r\nWHERE rentals.CarStatusId = " + selected + "\r\nORDER BY RentalId DESC\r\n", connection);
+            adapter = new SqlDataAdapter(sqlCommand);
+            dataTable = new DataTable();
+            dataTable.DefaultView.AllowNew = false;
             adapter.Fill(dataTable);
 
             dataGridView1.DataSource = dataTable;
+            sqlCommand.Dispose();
+            connection.Close();
         }
         /*
         private async void LoadData()
@@ -103,6 +118,15 @@ namespace WinFormsApp3
             MessageBox.Show("Kiralama işlemi başarıyla gerçekleşti.");
             */
             //LoadData();
+            if (selectedDataGridViewRowIndex != 0)
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("UPDATE rentals SET CarStatusId = 1 WHERE RentalId = " + selectedDataGridViewRowIndex, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+                LoadDataCommand(selectedComboBoxIndex);
+            }
         }
 
         //Reddetme
@@ -121,6 +145,15 @@ namespace WinFormsApp3
             MessageBox.Show("Kiralama işlemi güncellendi");
             */
             //LoadData();
+            if(selectedDataGridViewRowIndex != 0)
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("UPDATE rentals SET CarStatusId = 2 WHERE RentalId = " + selectedDataGridViewRowIndex, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+                LoadDataCommand(selectedComboBoxIndex);
+            }
         }
 
         private async Task FillFormFromGridAsync(int e)
@@ -135,6 +168,11 @@ namespace WinFormsApp3
                 carStatus.Text = dataGridView1.Rows[e].Cells[4].Value.ToString();
             }
             */
+        }
+        private int selectedDataGridViewRowIndex = 0;
+        private void dataGridView1_SelectionChanged(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            selectedDataGridViewRowIndex = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
         }
 
 

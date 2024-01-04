@@ -86,6 +86,8 @@
             dataGridView1.Size = new Size(872, 265);
             dataGridView1.TabIndex = 21;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // 
             // carIdDataGridViewTextBoxColumn1
             // 
