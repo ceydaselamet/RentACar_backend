@@ -48,8 +48,6 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            button3 = new Button();
-            button4 = new Button();
             button_1 = new Button();
             password = new TextBox();
             label6 = new Label();
@@ -63,11 +61,11 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { userIdDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn });
             dataGridView1.DataSource = userBindingSource;
-            dataGridView1.Location = new Point(572, 194);
+            dataGridView1.Location = new Point(500, 165);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(750, 347);
+            dataGridView1.Size = new Size(656, 295);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
             // 
@@ -118,17 +116,17 @@
             // 
             // searchTextBox
             // 
-            searchTextBox.Location = new Point(813, 72);
+            searchTextBox.Location = new Point(711, 61);
             searchTextBox.Multiline = true;
             searchTextBox.Name = "searchTextBox";
-            searchTextBox.Size = new Size(179, 34);
+            searchTextBox.Size = new Size(157, 30);
             searchTextBox.TabIndex = 1;
             // 
             // button1
             // 
-            button1.Location = new Point(1111, 67);
+            button1.Location = new Point(972, 57);
             button1.Name = "button1";
-            button1.Size = new Size(154, 57);
+            button1.Size = new Size(135, 48);
             button1.TabIndex = 2;
             button1.Text = "Ara";
             button1.UseVisualStyleBackColor = true;
@@ -136,9 +134,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(310, 36);
+            button2.Location = new Point(271, 31);
             button2.Name = "button2";
-            button2.Size = new Size(313, 98);
+            button2.Size = new Size(274, 83);
             button2.TabIndex = 3;
             button2.Text = "Tüm Kullanıcıları Listele";
             button2.UseVisualStyleBackColor = true;
@@ -148,47 +146,48 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(662, 83);
+            label1.Location = new Point(579, 71);
             label1.Name = "label1";
-            label1.Size = new Size(126, 23);
+            label1.Size = new Size(105, 19);
             label1.TabIndex = 4;
             label1.Text = "Kullanıcı Ara : ";
             // 
             // userId
             // 
-            userId.Location = new Point(174, 194);
+            userId.Enabled = false;
+            userId.Location = new Point(152, 165);
             userId.Name = "userId";
-            userId.Size = new Size(125, 27);
+            userId.Size = new Size(110, 25);
             userId.TabIndex = 5;
             // 
             // firstName
             // 
-            firstName.Location = new Point(174, 251);
+            firstName.Location = new Point(152, 213);
             firstName.Name = "firstName";
-            firstName.Size = new Size(125, 27);
+            firstName.Size = new Size(110, 25);
             firstName.TabIndex = 6;
             // 
             // lastName
             // 
-            lastName.Location = new Point(174, 318);
+            lastName.Location = new Point(152, 270);
             lastName.Name = "lastName";
-            lastName.Size = new Size(125, 27);
+            lastName.Size = new Size(110, 25);
             lastName.TabIndex = 7;
             // 
             // email
             // 
-            email.Location = new Point(174, 376);
+            email.Location = new Point(152, 320);
             email.Name = "email";
-            email.Size = new Size(125, 27);
+            email.Size = new Size(110, 25);
             email.TabIndex = 8;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(30, 198);
+            label2.Location = new Point(26, 168);
             label2.Name = "label2";
-            label2.Size = new Size(116, 23);
+            label2.Size = new Size(95, 19);
             label2.TabIndex = 9;
             label2.Text = "Kullanıcı ID : ";
             // 
@@ -196,9 +195,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(30, 258);
+            label3.Location = new Point(26, 219);
             label3.Name = "label3";
-            label3.Size = new Size(48, 23);
+            label3.Size = new Size(40, 19);
             label3.TabIndex = 10;
             label3.Text = "Ad : ";
             // 
@@ -206,9 +205,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(30, 321);
+            label4.Location = new Point(26, 273);
             label4.Name = "label4";
-            label4.Size = new Size(74, 23);
+            label4.Size = new Size(63, 19);
             label4.TabIndex = 11;
             label4.Text = "Soyad : ";
             // 
@@ -216,44 +215,18 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(30, 383);
+            label5.Location = new Point(26, 326);
             label5.Name = "label5";
-            label5.Size = new Size(69, 23);
+            label5.Size = new Size(57, 19);
             label5.TabIndex = 12;
             label5.Text = "Email : ";
-            // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.HotTrack;
-            button3.ForeColor = SystemColors.ActiveCaptionText;
-            button3.Location = new Point(120, 551);
-            button3.Margin = new Padding(3, 4, 3, 4);
-            button3.Name = "button3";
-            button3.Size = new Size(111, 38);
-            button3.TabIndex = 23;
-            button3.Text = "Sil";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
-            // 
-            // button4
-            // 
-            button4.BackColor = SystemColors.ActiveCaption;
-            button4.Location = new Point(195, 479);
-            button4.Margin = new Padding(3, 4, 3, 4);
-            button4.Name = "button4";
-            button4.Size = new Size(117, 40);
-            button4.TabIndex = 22;
-            button4.Text = "Düzenle";
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
             // 
             // button_1
             // 
             button_1.BackColor = SystemColors.ActiveCaption;
-            button_1.Location = new Point(61, 479);
-            button_1.Margin = new Padding(3, 4, 3, 4);
+            button_1.Location = new Point(98, 426);
             button_1.Name = "button_1";
-            button_1.Size = new Size(111, 40);
+            button_1.Size = new Size(97, 34);
             button_1.TabIndex = 21;
             button_1.Text = "Ekle";
             button_1.UseVisualStyleBackColor = false;
@@ -261,9 +234,9 @@
             // 
             // password
             // 
-            password.Location = new Point(174, 430);
+            password.Location = new Point(152, 366);
             password.Name = "password";
-            password.Size = new Size(125, 27);
+            password.Size = new Size(110, 25);
             password.TabIndex = 24;
             password.UseSystemPasswordChar = true;
             // 
@@ -271,21 +244,19 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(30, 437);
+            label6.Location = new Point(26, 371);
             label6.Name = "label6";
-            label6.Size = new Size(63, 23);
+            label6.Size = new Size(52, 19);
             label6.TabIndex = 25;
             label6.Text = "Şifre : ";
             // 
             // ManageUsers
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1380, 592);
+            ClientSize = new Size(1208, 503);
             Controls.Add(label6);
             Controls.Add(password);
-            Controls.Add(button3);
-            Controls.Add(button4);
             Controls.Add(button_1);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -329,8 +300,6 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private Button button3;
-        private Button button4;
         private Button button_1;
         private TextBox password;
         private Label label6;

@@ -68,10 +68,12 @@
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             carImage = new Button();
             panel1 = new Panel();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)carDetailDtoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)carDetailDtoBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
@@ -82,12 +84,12 @@
             dataGridView1.DataSource = carDetailDtoBindingSource;
             dataGridView1.Location = new Point(468, 353);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(872, 265);
             dataGridView1.TabIndex = 21;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // 
             // carIdDataGridViewTextBoxColumn1
             // 
@@ -95,6 +97,7 @@
             carIdDataGridViewTextBoxColumn1.HeaderText = "CarId";
             carIdDataGridViewTextBoxColumn1.MinimumWidth = 6;
             carIdDataGridViewTextBoxColumn1.Name = "carIdDataGridViewTextBoxColumn1";
+            carIdDataGridViewTextBoxColumn1.ReadOnly = true;
             carIdDataGridViewTextBoxColumn1.Width = 125;
             // 
             // brandNameDataGridViewTextBoxColumn1
@@ -103,6 +106,7 @@
             brandNameDataGridViewTextBoxColumn1.HeaderText = "BrandName";
             brandNameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             brandNameDataGridViewTextBoxColumn1.Name = "brandNameDataGridViewTextBoxColumn1";
+            brandNameDataGridViewTextBoxColumn1.ReadOnly = true;
             brandNameDataGridViewTextBoxColumn1.Width = 125;
             // 
             // colorNameDataGridViewTextBoxColumn1
@@ -111,6 +115,7 @@
             colorNameDataGridViewTextBoxColumn1.HeaderText = "ColorName";
             colorNameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             colorNameDataGridViewTextBoxColumn1.Name = "colorNameDataGridViewTextBoxColumn1";
+            colorNameDataGridViewTextBoxColumn1.ReadOnly = true;
             colorNameDataGridViewTextBoxColumn1.Width = 125;
             // 
             // modelNameDataGridViewTextBoxColumn1
@@ -119,6 +124,7 @@
             modelNameDataGridViewTextBoxColumn1.HeaderText = "ModelName";
             modelNameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             modelNameDataGridViewTextBoxColumn1.Name = "modelNameDataGridViewTextBoxColumn1";
+            modelNameDataGridViewTextBoxColumn1.ReadOnly = true;
             modelNameDataGridViewTextBoxColumn1.Width = 125;
             // 
             // fuelTypeNameDataGridViewTextBoxColumn1
@@ -127,6 +133,7 @@
             fuelTypeNameDataGridViewTextBoxColumn1.HeaderText = "FuelTypeName";
             fuelTypeNameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             fuelTypeNameDataGridViewTextBoxColumn1.Name = "fuelTypeNameDataGridViewTextBoxColumn1";
+            fuelTypeNameDataGridViewTextBoxColumn1.ReadOnly = true;
             fuelTypeNameDataGridViewTextBoxColumn1.Width = 125;
             // 
             // gearTypeNameDataGridViewTextBoxColumn1
@@ -135,6 +142,7 @@
             gearTypeNameDataGridViewTextBoxColumn1.HeaderText = "GearTypeName";
             gearTypeNameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             gearTypeNameDataGridViewTextBoxColumn1.Name = "gearTypeNameDataGridViewTextBoxColumn1";
+            gearTypeNameDataGridViewTextBoxColumn1.ReadOnly = true;
             gearTypeNameDataGridViewTextBoxColumn1.Width = 125;
             // 
             // modelYearDataGridViewTextBoxColumn1
@@ -143,6 +151,7 @@
             modelYearDataGridViewTextBoxColumn1.HeaderText = "ModelYear";
             modelYearDataGridViewTextBoxColumn1.MinimumWidth = 6;
             modelYearDataGridViewTextBoxColumn1.Name = "modelYearDataGridViewTextBoxColumn1";
+            modelYearDataGridViewTextBoxColumn1.ReadOnly = true;
             modelYearDataGridViewTextBoxColumn1.Width = 125;
             // 
             // dailyPriceDataGridViewTextBoxColumn1
@@ -151,6 +160,7 @@
             dailyPriceDataGridViewTextBoxColumn1.HeaderText = "DailyPrice";
             dailyPriceDataGridViewTextBoxColumn1.MinimumWidth = 6;
             dailyPriceDataGridViewTextBoxColumn1.Name = "dailyPriceDataGridViewTextBoxColumn1";
+            dailyPriceDataGridViewTextBoxColumn1.ReadOnly = true;
             dailyPriceDataGridViewTextBoxColumn1.Width = 125;
             // 
             // carImageDataGridViewTextBoxColumn1
@@ -159,6 +169,7 @@
             carImageDataGridViewTextBoxColumn1.HeaderText = "CarImage";
             carImageDataGridViewTextBoxColumn1.MinimumWidth = 6;
             carImageDataGridViewTextBoxColumn1.Name = "carImageDataGridViewTextBoxColumn1";
+            carImageDataGridViewTextBoxColumn1.ReadOnly = true;
             carImageDataGridViewTextBoxColumn1.Visible = false;
             carImageDataGridViewTextBoxColumn1.Width = 125;
             // 
@@ -168,6 +179,7 @@
             ısSuitableDataGridViewCheckBoxColumn1.HeaderText = "IsSuitable";
             ısSuitableDataGridViewCheckBoxColumn1.MinimumWidth = 6;
             ısSuitableDataGridViewCheckBoxColumn1.Name = "ısSuitableDataGridViewCheckBoxColumn1";
+            ısSuitableDataGridViewCheckBoxColumn1.ReadOnly = true;
             ısSuitableDataGridViewCheckBoxColumn1.Width = 125;
             // 
             // carDetailDtoBindingSource
@@ -262,7 +274,6 @@
             carId.Size = new Size(134, 25);
             carId.TabIndex = 1;
             carId.Text = "Araç Id";
-            carId.Click += addButtonActive;
             // 
             // brandName
             // 
@@ -271,7 +282,6 @@
             brandName.Name = "brandName";
             brandName.Size = new Size(133, 25);
             brandName.TabIndex = 2;
-            brandName.Click += addButtonActive;
             // 
             // carModelName
             // 
@@ -280,7 +290,6 @@
             carModelName.Name = "carModelName";
             carModelName.Size = new Size(133, 25);
             carModelName.TabIndex = 3;
-            carModelName.Click += addButtonActive;
             // 
             // button3
             // 
@@ -325,7 +334,6 @@
             dailyPrice.PlaceholderText = "Günlük Fiyatı";
             dailyPrice.Size = new Size(133, 25);
             dailyPrice.TabIndex = 17;
-            dailyPrice.Click += addButtonActive;
             // 
             // modelYear
             // 
@@ -334,7 +342,6 @@
             modelYear.PlaceholderText = "Model Yılı";
             modelYear.Size = new Size(132, 25);
             modelYear.TabIndex = 16;
-            modelYear.Click += addButtonActive;
             // 
             // gearTypeName
             // 
@@ -344,7 +351,6 @@
             gearTypeName.Name = "gearTypeName";
             gearTypeName.Size = new Size(133, 25);
             gearTypeName.TabIndex = 15;
-            gearTypeName.Click += addButtonActive;
             // 
             // carDetailDtoBindingSource1
             // 
@@ -358,7 +364,6 @@
             fuelTypeName.Name = "fuelTypeName";
             fuelTypeName.Size = new Size(133, 25);
             fuelTypeName.TabIndex = 14;
-            fuelTypeName.Click += addButtonActive;
             // 
             // colorName
             // 
@@ -368,7 +373,6 @@
             colorName.Name = "colorName";
             colorName.Size = new Size(133, 25);
             colorName.TabIndex = 13;
-            colorName.Click += addButtonActive;
             // 
             // pictureBox1
             // 
@@ -401,11 +405,22 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1361, 100);
             panel1.TabIndex = 24;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Rockwell Extra Bold", 30F, FontStyle.Italic, GraphicsUnit.Point);
+            label1.Location = new Point(468, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(506, 47);
+            label1.TabIndex = 5;
+            label1.Text = "Araç Yönetim Paneli";
             // 
             // ManageCars
             // 
@@ -433,6 +448,8 @@
             ((System.ComponentModel.ISupportInitialize)carDetailDtoBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)carDetailDtoBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -477,5 +494,6 @@
         private DataGridViewTextBoxColumn carImageDataGridViewTextBoxColumn1;
         private DataGridViewCheckBoxColumn ısSuitableDataGridViewCheckBoxColumn1;
         private Panel panel1;
+        private Label label1;
     }
 }

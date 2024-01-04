@@ -46,13 +46,13 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { RentalId });
             dataGridView1.Location = new Point(63, 126);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1278, 354);
             dataGridView1.TabIndex = 20;
             dataGridView1.CellMouseClick += dataGridView1_SelectionChanged;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // 
             // RentalId
             // 
@@ -60,6 +60,7 @@
             RentalId.HeaderText = "RentalId";
             RentalId.MinimumWidth = 6;
             RentalId.Name = "RentalId";
+            RentalId.ReadOnly = true;
             RentalId.Width = 125;
             // 
             // rentalDetailDtoBindingSource
@@ -92,11 +93,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Rockwell Extra Bold", 30F, FontStyle.Italic, GraphicsUnit.Point);
-            label1.Location = new Point(478, 37);
+            label1.Location = new Point(404, 34);
             label1.Name = "label1";
-            label1.Size = new Size(409, 47);
+            label1.Size = new Size(611, 47);
             label1.TabIndex = 26;
-            label1.Text = "Manage Rentals";
+            label1.Text = "Randevu Yönetim Paneli";
             // 
             // carStatus
             // 

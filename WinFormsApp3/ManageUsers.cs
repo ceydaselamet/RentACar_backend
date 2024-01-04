@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace WinFormsApp3
@@ -36,41 +37,21 @@ namespace WinFormsApp3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string searchText = searchTextBox.Text.ToLower();
+            /*
+            string searchText = searchTextBox.Text.Trim();
 
-            // Kullanıcı arama işlemi
-            var users = _userService.GetAll();
+            // GridView'deki verileri DataTable'a al
+            DataTable dataTable = dataGridView1.DataSource;
 
-            if (users.Success)
-            {
-                // DataGridView'deki her bir satırı kontrol et
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    bool rowVisible = false;
+            // Eşleşen verileri filtrele
+            DataRow[] matchingRows = dataTable.Select($"FirstName = '{searchText}' OR LastName = '{searchText}' OR Email = '{searchText}'", "Column1");
 
-                    // DataGridView'deki her bir hücreyi kontrol et
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        // Hücrenin metnini küçük harfe çevir
-                        string cellText = cell.Value?.ToString().ToLower();
+            // Sonuçları yeni bir DataTable'a aktar
+            DataTable resultTable = matchingRows.Any() ? matchingRows.CopyToDataTable() : dataTable.Clone();
 
-                        // Arama metni ile hücrenin metni karşılaştır
-                        if (cellText != null && cellText.Contains(searchText))
-                        {
-                            rowVisible = true;
-                            break;
-                        }
-                    }
-
-                    // Eğer herhangi bir hücre eşleşiyorsa satırı göster, aksi takdirde gizle
-                    row.Visible = rowVisible;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Kullanıcı bulunamadı!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
+            // Sonuçları GridView'e bağla
+            dataGridView1.DataSource = resultTable;
+            */
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -123,7 +104,7 @@ namespace WinFormsApp3
             if (result == DialogResult.Yes)
             {
                 _userService.Delete(userToDelete);
-                MessageBox.Show("Araç başarıyla silindi.");
+                MessageBox.Show("Kullanıcı başarıyla silindi.");
                 LoadData();
             }
         }
@@ -135,6 +116,7 @@ namespace WinFormsApp3
                 firstName.Text = dataGridView1.Rows[e].Cells[1].Value.ToString();
                 lastName.Text = dataGridView1.Rows[e].Cells[3].Value.ToString();
                 email.Text = dataGridView1.Rows[e].Cells[2].Value.ToString();
+                password.Text = dataGridView1.Rows[e].Cells[4].Value.ToString();
             }
         }
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

@@ -14,6 +14,7 @@ namespace DataAccess.Concrete
         {
             //optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-5DJ9FN4\SQLEXPRESS;Database=RentACar;Trusted_Connection=true;TrustServerCertificate=true;");
             optionsBuilder.UseSqlServer("Data Source=WIN-47H6MAU8L06;User ID=sa;Password=Rentacar43;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+
         }
 
         public DbSet<Car> Cars  { get; set; }

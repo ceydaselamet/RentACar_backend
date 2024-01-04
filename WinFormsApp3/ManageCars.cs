@@ -121,6 +121,9 @@ namespace WinFormsApp3
         {
             if (!urlInLocale.Equals(""))
                 imageUrlAdress = await uploadAsync(urlInLocale);
+
+            int selectedRowIndex = dataGridView1.SelectedCells[0].RowIndex;
+
             Car updatedCar = new Car()
             {
                 CarId = Convert.ToInt32(carId.Text),
@@ -132,7 +135,7 @@ namespace WinFormsApp3
                 ModelYear = Convert.ToInt32(modelYear.Text),
                 DailyPrice = Convert.ToDecimal(dailyPrice.Text),
                 CarImage = imageUrlAdress,
-                IsSuitable = true
+                IsSuitable = (bool)dataGridView1.Rows[selectedRowIndex].Cells["ısSuitableDataGridViewCheckBoxColumn1"].Value
             };
 
             _carService.Update(updatedCar);
@@ -235,7 +238,8 @@ namespace WinFormsApp3
             try
             {
                 downloadUrl = await task;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -269,7 +273,7 @@ namespace WinFormsApp3
         private void selectCarImageButton_Click(object sender, EventArgs e)
         {
             urlInLocale = SelectImage();
-            if(!urlInLocale.Equals(""))
+            if (!urlInLocale.Equals(""))
                 pictureBox1.Image = Image.FromFile(urlInLocale);
         }
 

@@ -46,6 +46,7 @@
             button3 = new Button();
             button2 = new Button();
             button_1 = new Button();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)maintenanceDetailDtoBindingSource).BeginInit();
             SuspendLayout();
@@ -56,11 +57,11 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { maintenanceIdDataGridViewTextBoxColumn, carIdDataGridViewTextBoxColumn, maintenanceTypeDataGridViewTextBoxColumn, dateDataGridViewTextBoxColumn });
             dataGridView1.DataSource = maintenanceDetailDtoBindingSource;
-            dataGridView1.Location = new Point(619, 171);
+            dataGridView1.Location = new Point(542, 145);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(746, 325);
+            dataGridView1.Size = new Size(653, 276);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
             // 
@@ -102,42 +103,42 @@
             // 
             // maintenanceId
             // 
-            maintenanceId.Location = new Point(172, 142);
+            maintenanceId.Location = new Point(150, 121);
             maintenanceId.Name = "maintenanceId";
-            maintenanceId.Size = new Size(163, 27);
+            maintenanceId.Size = new Size(143, 25);
             maintenanceId.TabIndex = 1;
             maintenanceId.Text = "Bakım Id";
             // 
             // carId
             // 
-            carId.Location = new Point(172, 200);
+            carId.Location = new Point(150, 170);
             carId.Name = "carId";
-            carId.Size = new Size(163, 27);
+            carId.Size = new Size(143, 25);
             carId.TabIndex = 2;
             carId.Text = "Araç Id";
             // 
             // maintenanceType
             // 
             maintenanceType.FormattingEnabled = true;
-            maintenanceType.Location = new Point(172, 255);
+            maintenanceType.Location = new Point(150, 217);
             maintenanceType.Name = "maintenanceType";
-            maintenanceType.Size = new Size(163, 28);
+            maintenanceType.Size = new Size(143, 25);
             maintenanceType.TabIndex = 3;
             // 
             // date
             // 
-            date.Location = new Point(172, 348);
+            date.Location = new Point(150, 296);
             date.Name = "date";
-            date.Size = new Size(264, 27);
+            date.Size = new Size(232, 25);
             date.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(13, 146);
+            label1.Location = new Point(11, 124);
             label1.Name = "label1";
-            label1.Size = new Size(43, 23);
+            label1.Size = new Size(35, 19);
             label1.TabIndex = 5;
             label1.Text = "ID : ";
             // 
@@ -145,9 +146,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(12, 204);
+            label2.Location = new Point(10, 173);
             label2.Name = "label2";
-            label2.Size = new Size(84, 23);
+            label2.Size = new Size(70, 19);
             label2.TabIndex = 6;
             label2.Text = "Araç ID : ";
             // 
@@ -155,9 +156,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(13, 260);
+            label3.Location = new Point(11, 221);
             label3.Name = "label3";
-            label3.Size = new Size(117, 23);
+            label3.Size = new Size(96, 19);
             label3.TabIndex = 7;
             label3.Text = "Bakım Türü : ";
             // 
@@ -165,9 +166,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(13, 348);
+            label4.Location = new Point(11, 296);
             label4.Name = "label4";
-            label4.Size = new Size(140, 23);
+            label4.Size = new Size(117, 19);
             label4.TabIndex = 8;
             label4.Text = "Bakım Zamanı : ";
             // 
@@ -176,10 +177,9 @@
             button3.BackColor = SystemColors.HotTrack;
             button3.Enabled = false;
             button3.ForeColor = SystemColors.ActiveCaptionText;
-            button3.Location = new Point(102, 528);
-            button3.Margin = new Padding(3, 4, 3, 4);
+            button3.Location = new Point(89, 449);
             button3.Name = "button3";
-            button3.Size = new Size(111, 38);
+            button3.Size = new Size(97, 32);
             button3.TabIndex = 23;
             button3.Text = "Sil";
             button3.UseVisualStyleBackColor = false;
@@ -189,10 +189,9 @@
             // 
             button2.BackColor = SystemColors.ActiveCaption;
             button2.Enabled = false;
-            button2.Location = new Point(176, 456);
-            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Location = new Point(154, 388);
             button2.Name = "button2";
-            button2.Size = new Size(117, 40);
+            button2.Size = new Size(102, 34);
             button2.TabIndex = 22;
             button2.Text = "Düzenle";
             button2.UseVisualStyleBackColor = false;
@@ -201,20 +200,30 @@
             // button_1
             // 
             button_1.BackColor = SystemColors.ActiveCaption;
-            button_1.Location = new Point(42, 456);
-            button_1.Margin = new Padding(3, 4, 3, 4);
+            button_1.Location = new Point(37, 388);
             button_1.Name = "button_1";
-            button_1.Size = new Size(111, 40);
+            button_1.Size = new Size(97, 34);
             button_1.TabIndex = 21;
             button_1.Text = "Ekle";
             button_1.UseVisualStyleBackColor = false;
             button_1.Click += button_1_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Rockwell Extra Bold", 30F, FontStyle.Italic, GraphicsUnit.Point);
+            label5.Location = new Point(315, 29);
+            label5.Name = "label5";
+            label5.Size = new Size(674, 47);
+            label5.TabIndex = 24;
+            label5.Text = "Araç Bakım Yönetim Paneli";
+            // 
             // ManageMaintenances
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1401, 726);
+            ClientSize = new Size(1226, 513);
+            Controls.Add(label5);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button_1);
@@ -254,5 +263,6 @@
         private Button button3;
         private Button button2;
         private Button button_1;
+        private Label label5;
     }
 }

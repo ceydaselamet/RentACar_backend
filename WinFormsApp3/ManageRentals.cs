@@ -17,22 +17,22 @@ namespace WinFormsApp3
 {
     public partial class ManageRentals : Form
     {
-        /*
+
         IRentalService _rentalService;
         IStatusService _statusService;
         ICarService _carService;
-        */
+
         DataGridViewButtonColumn approveButtonColumn;
         DataGridViewButtonColumn rejectButtonColumn;
 
         public ManageRentals()
         {
             InitializeComponent();
-            /*
-                _rentalService = new RentalManager(new EfRentalDal());
-                _statusService = new StatusManager(new EfStatusDal());
-                _carService = new CarManager(new EfCarDal());
-            */
+
+            _rentalService = new RentalManager(new EfRentalDal());
+            _statusService = new StatusManager(new EfStatusDal());
+            _carService = new CarManager(new EfCarDal());
+
             /*
             approveButtonColumn = new DataGridViewButtonColumn();
             approveButtonColumn.Name = "btnApprove_Click";
@@ -53,7 +53,7 @@ namespace WinFormsApp3
 
         private async Task whileLoadAsync()
         {
-            while(true)
+            while (true)
             {
                 LoadDataCommand(selectedComboBoxIndex);
                 await Task.Delay(5000);
@@ -118,14 +118,20 @@ namespace WinFormsApp3
             MessageBox.Show("Kiralama işlemi başarıyla gerçekleşti.");
             */
             //LoadData();
-            if (selectedDataGridViewRowIndex != 0)
+            if (selectedRentalIdDataGridViewRowIndex != 0)
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("UPDATE rentals SET CarStatusId = 1 WHERE RentalId = " + selectedDataGridViewRowIndex, connection);
+                SqlCommand command = new SqlCommand("UPDATE rentals SET CarStatusId = 1 WHERE RentalId = " + selectedRentalIdDataGridViewRowIndex, connection);
                 command.ExecuteNonQuery();
                 command.Dispose();
+
+                SqlCommand command2 = new SqlCommand("UPDATE cars SET IsSuitable = 0 WHERE CarId = " + selectedCarIdDataGridViewRowIndex, connection);
+                command2.ExecuteNonQuery();
+                command2.Dispose();
+
                 connection.Close();
                 LoadDataCommand(selectedComboBoxIndex);
+
             }
         }
 
@@ -145,10 +151,10 @@ namespace WinFormsApp3
             MessageBox.Show("Kiralama işlemi güncellendi");
             */
             //LoadData();
-            if(selectedDataGridViewRowIndex != 0)
+            if (selectedRentalIdDataGridViewRowIndex != 0)
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("UPDATE rentals SET CarStatusId = 2 WHERE RentalId = " + selectedDataGridViewRowIndex, connection);
+                SqlCommand command = new SqlCommand("UPDATE rentals SET CarStatusId = 2 WHERE RentalId = " + selectedRentalIdDataGridViewRowIndex, connection);
                 command.ExecuteNonQuery();
                 command.Dispose();
                 connection.Close();
@@ -169,18 +175,21 @@ namespace WinFormsApp3
             }
             */
         }
-        private int selectedDataGridViewRowIndex = 0;
+        private int selectedRentalIdDataGridViewRowIndex = 0;
+        private int selectedCarIdDataGridViewRowIndex = 0;
+
         private void dataGridView1_SelectionChanged(object sender, DataGridViewCellMouseEventArgs e)
         {
-            selectedDataGridViewRowIndex = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            selectedRentalIdDataGridViewRowIndex = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            selectedCarIdDataGridViewRowIndex = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
         }
 
 
-        /*
+
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int rentalId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-            
+
 
             if (e.ColumnIndex == dataGridView1.Columns["btnApprove_Click"].Index)
             {
@@ -193,7 +202,7 @@ namespace WinFormsApp3
 
             //LoadData();
         }
-        
+
         private void ProcessRentalApproval(int rentalId)
         {
             Rental rental = GetRentalById(rentalId);
@@ -248,7 +257,7 @@ namespace WinFormsApp3
         {
             return _statusService.GetByName(statusName).Data.StatusId;
         }
-        */
+
 
     }
 }
