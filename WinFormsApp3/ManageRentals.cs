@@ -2,6 +2,7 @@
 using Business.Concrete;
 using DataAccess.Concrete;
 using Entities.Concrete;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,20 +17,58 @@ namespace WinFormsApp3
 {
     public partial class ManageRentals : Form
     {
+        /*
         IRentalService _rentalService;
         IStatusService _statusService;
-        ICustomerService _customerService;
+        ICarService _carService;
+        */
+        DataGridViewButtonColumn approveButtonColumn;
+        DataGridViewButtonColumn rejectButtonColumn;
+
         public ManageRentals()
         {
             InitializeComponent();
-            _rentalService = new RentalManager(new EfRentalDal());
-            _statusService = new StatusManager(new EfStatusDal());
-            _customerService = new CustomerManager(new EfCustomerDal());
+            /*
+                _rentalService = new RentalManager(new EfRentalDal());
+                _statusService = new StatusManager(new EfStatusDal());
+                _carService = new CarManager(new EfCarDal());
+            */
+            /*
+            approveButtonColumn = new DataGridViewButtonColumn();
+            approveButtonColumn.Name = "btnApprove_Click";
+            approveButtonColumn.Text = "Onayla";
+            approveButtonColumn.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(approveButtonColumn);
 
-            LoadData();
-            LoadCarStatuses();
+            rejectButtonColumn = new DataGridViewButtonColumn();
+            rejectButtonColumn.Name = "btnReject_Click";
+            rejectButtonColumn.Text = "Reddet";
+            rejectButtonColumn.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(rejectButtonColumn);
+            */
+            //LoadData();
+            //LoadCarStatuses();
+
+            LoadDataCommand(selected);
+        }
+        private int selected = 3;
+        private void SelectedComboBox(object sender, EventArgs e)
+        {
+            selected = carStatus.SelectedIndex + 1;
+            LoadDataCommand(selected);
         }
 
+        void LoadDataCommand(int selected)
+        {
+            SqlConnection connection = new SqlConnection("Data Source=WIN-47H6MAU8L06;User ID=sa;Password=Rentacar43;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            SqlCommand sqlCommand = new SqlCommand("SELECT \r\n    rentals.RentalId, \r\n    rentals.CustomerId, \r\n\tusers.FirstName + ' ' + users.LastName AS Customer,\r\n\tusers.Email,\r\n\trentals.CarId,\r\n    brands.BrandName + ' ' + carmodels.ModelName + ' ' + CAST(cars.ModelYear AS nvarchar(10)) AS CarTitle,\r\n\tDATEDIFF(DAY, PARSE(RentDate AS datetime USING 'en-US'),PARSE(ReturnDate AS datetime USING 'en-US')) + 1 AS TotalRentDays,\r\n\tcars.DailyPrice,\r\n\tcolors.ColorName,\r\n    rentals.RentDate, \r\n    rentals.ReturnDate,\r\n\tstatuses.CarStatus\r\nFROM \r\n    rentals rentals\r\nJOIN \r\n    cars cars ON rentals.CarId = cars.CarId\r\nJOIN \r\n    brands brands ON cars.BrandId = brands.BrandId\r\nJOIN\r\n\tcolors colors ON colors.ColorId = cars.ColorId\r\nJOIN\r\n\tstatuses statuses ON statuses.StatusId = rentals.CarStatusId\r\nJOIN\r\n\tcarmodels carmodels ON carmodels.ModelId = cars.ModelId\r\nJOIN \r\n\tusers users ON users.UserId = rentals.CustomerId\r\nWHERE rentals.CarStatusId = " + selected + "\r\nORDER BY RentalId DESC\r\n", connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+
+            dataGridView1.DataSource = dataTable;
+        }
+        /*
         private async void LoadData()
         {
             var rentalDetails = _rentalService.GetRentalDetails();
@@ -47,7 +86,8 @@ namespace WinFormsApp3
             carStatus.ValueMember = "StatusId";
 
         }
-        //Ekleme
+        */
+        //Onaylama
         private void button_1_Click(object sender, EventArgs e)
         {
             /*
@@ -62,10 +102,10 @@ namespace WinFormsApp3
             _rentalService.Add(addToRental);
             MessageBox.Show("Kiralama işlemi başarıyla gerçekleşti.");
             */
-            LoadData();
+            //LoadData();
         }
 
-        //Düzenleme
+        //Reddetme
         private void button4_Click(object sender, EventArgs e)
         {
             /*
@@ -80,7 +120,7 @@ namespace WinFormsApp3
             _rentalService.Update(updateToRental);
             MessageBox.Show("Kiralama işlemi güncellendi");
             */
-            LoadData();
+            //LoadData();
         }
 
         private async Task FillFormFromGridAsync(int e)
@@ -97,11 +137,80 @@ namespace WinFormsApp3
             */
         }
 
+
+        /*
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            FillFormFromGridAsync(e.RowIndex);
+            int rentalId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            
+
+            if (e.ColumnIndex == dataGridView1.Columns["btnApprove_Click"].Index)
+            {
+                ProcessRentalApproval(rentalId);
+            }
+            else if (e.ColumnIndex == dataGridView1.Columns["btnReject_Click"].Index)
+            {
+                ProcessRentalRejection(rentalId);
+            }
+
+            //LoadData();
+        }
+        
+        private void ProcessRentalApproval(int rentalId)
+        {
+            Rental rental = GetRentalById(rentalId);
+            if (rental != null)
+            {
+                SetCarSuitable(rental.CarId, false);
+                SetRentalStatus(rentalId, "Onaylandı");
+            }
         }
 
+        private void ProcessRentalRejection(int rentalId)
+        {
+            Rental rental = GetRentalById(rentalId);
+            if (rental != null)
+            {
+                SetCarSuitable(rental.CarId, true);
+                SetRentalStatus(rentalId, "Reddedildi");
+            }
+        }
+        private void SetCarSuitable(int carId, bool isSuitable)
+        {
+            Car car = GetByCarId(carId);
+
+            if (car != null)
+            {
+                car.IsSuitable = isSuitable;
+                _carService.Update(car);
+            }
+        }
+        private void SetRentalStatus(int rentalId, string status)
+        {
+            Rental rental = GetRentalById(rentalId);
+
+            if (rental != null)
+            {
+                rental.CarStatusId = GetCarStatusIdByName(status);
+                _rentalService.Update(rental);
+            }
+        }
+
+        private Car GetByCarId(int carId)
+        {
+            return _carService.GetById(carId).Data;
+        }
+
+        private Rental GetRentalById(int rentalId)
+        {
+            return _rentalService.GetById(rentalId).Data;
+        }
+
+        private int GetCarStatusIdByName(string statusName)
+        {
+            return _statusService.GetByName(statusName).Data.StatusId;
+        }
+        */
 
     }
 }

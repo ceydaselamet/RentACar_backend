@@ -12,6 +12,7 @@ namespace Business.Abstract
     {
         IDataResult<List<Status>> GetAll();
         IDataResult<Status> GetById(int id);
+        IDataResult<Status> GetByName(string carStatus);
 
         IResult Add(Status status);
         IResult Update(Status status);

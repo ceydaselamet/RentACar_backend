@@ -33,6 +33,7 @@ namespace DataAccess.Concrete
 
                              select new RentalDetailDto
                              {
+                                 RentalId = rental.RentalId,
                                  CarId = car.CarId,
                                  FullName = user.FirstName + " " + user.LastName,
                                  RentDate = Convert.ToDateTime(rental.RentDate),
