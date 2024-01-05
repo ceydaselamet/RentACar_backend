@@ -5,6 +5,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using Firebase.Storage;
 using System.Net;
+using Business.Constants;
 
 namespace WinFormsApp3
 {
@@ -197,12 +198,11 @@ namespace WinFormsApp3
 
             }
         }
-
         private async Task<Image> DownloadImageAsync(string imageUrl)
         {
             using (WebClient webClient = new WebClient())
             {
-                byte[] imageBytes = webClient.DownloadData(imageUrl);
+                byte[] imageBytes = webClient.DownloadData(f+imageUrl.Substring(42));
                 using (MemoryStream ms = new MemoryStream(imageBytes))
                 {
                     Image image = Image.FromStream(ms);
@@ -220,15 +220,15 @@ namespace WinFormsApp3
 
         }
 
-        //resmin internetteki konumunu döndürür.
         private async Task<string> uploadAsync(string url)
         {
-            Guid guid = Guid.NewGuid();
+
+        Guid guid = Guid.NewGuid();
             var downloadUrl = "";
 
             var stream = File.Open(url, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 
-            var task = new FirebaseStorage("uploadimageiot.appspot.com")
+        var task = new FirebaseStorage("uploadimageiot.appspot.com")
                 .Child("carImages")
                 .Child(guid.ToString() + ".png")
                 .PutAsync(stream);
@@ -283,5 +283,6 @@ namespace WinFormsApp3
             button3.Enabled = true;
             button2.Enabled = true;
         }
+        public static string f = "https://firebasestorage.googleapis.com/v0/b/uploadimageiot.appspot.com";
     }
 }

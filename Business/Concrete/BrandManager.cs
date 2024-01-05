@@ -47,5 +47,6 @@ namespace Business.Concrete
             _brandDal.Update(brand);
             return new SuccessResult(Messages.BrandUpdated);
         }
+
     }
 }

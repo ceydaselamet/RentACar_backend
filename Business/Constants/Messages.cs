@@ -30,7 +30,6 @@ namespace Business.Constants
         public static string TheCarHasNotBeenReturnedYet = "Araç henüz teslim edilmedi";
         public static string ThePriceMustBeGreaterThanZero = "Fiyat 0'dan yüksek olmalı";
 
-
         public static string CustomerAdded = "Müşteri eklendi";
         public static string CustomerDeleted = "Müşteri silindi";
         public static string CustomerUpdated = "Müşteri güncellendi";

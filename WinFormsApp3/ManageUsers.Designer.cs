@@ -30,16 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            userIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             userBindingSource = new BindingSource(components);
-            searchTextBox = new TextBox();
-            button1 = new Button();
             button2 = new Button();
-            label1 = new Label();
             userId = new TextBox();
             firstName = new TextBox();
             lastName = new TextBox();
@@ -51,6 +43,11 @@
             button_1 = new Button();
             password = new TextBox();
             label6 = new Label();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
             SuspendLayout();
@@ -59,7 +56,7 @@
             // 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { userIdDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
             dataGridView1.DataSource = userBindingSource;
             dataGridView1.Location = new Point(500, 165);
             dataGridView1.Name = "dataGridView1";
@@ -69,88 +66,19 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
             // 
-            // userIdDataGridViewTextBoxColumn
-            // 
-            userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
-            userIdDataGridViewTextBoxColumn.HeaderText = "UserId";
-            userIdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
-            userIdDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            firstNameDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            lastNameDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            emailDataGridViewTextBoxColumn.MinimumWidth = 6;
-            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            emailDataGridViewTextBoxColumn.Width = 350;
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            passwordDataGridViewTextBoxColumn.HeaderText = "Password";
-            passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            passwordDataGridViewTextBoxColumn.Visible = false;
-            passwordDataGridViewTextBoxColumn.Width = 125;
-            // 
             // userBindingSource
             // 
             userBindingSource.DataSource = typeof(Entities.Concrete.User);
             // 
-            // searchTextBox
-            // 
-            searchTextBox.Location = new Point(711, 61);
-            searchTextBox.Multiline = true;
-            searchTextBox.Name = "searchTextBox";
-            searchTextBox.Size = new Size(157, 30);
-            searchTextBox.TabIndex = 1;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(972, 57);
-            button1.Name = "button1";
-            button1.Size = new Size(135, 48);
-            button1.TabIndex = 2;
-            button1.Text = "Ara";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // button2
             // 
-            button2.Location = new Point(271, 31);
+            button2.Location = new Point(701, 50);
             button2.Name = "button2";
             button2.Size = new Size(274, 83);
             button2.TabIndex = 3;
             button2.Text = "Tüm Kullanıcıları Listele";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(579, 71);
-            label1.Name = "label1";
-            label1.Size = new Size(105, 19);
-            label1.TabIndex = 4;
-            label1.Text = "Kullanıcı Ara : ";
             // 
             // userId
             // 
@@ -250,6 +178,38 @@
             label6.TabIndex = 25;
             label6.Text = "Şifre : ";
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.DataPropertyName = "UserId";
+            dataGridViewTextBoxColumn1.HeaderText = "UserId";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "FirstName";
+            dataGridViewTextBoxColumn2.HeaderText = "FirstName";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.DataPropertyName = "LastName";
+            dataGridViewTextBoxColumn3.HeaderText = "LastName";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "Email";
+            dataGridViewTextBoxColumn4.HeaderText = "Email";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.DataPropertyName = "Password";
+            dataGridViewTextBoxColumn5.HeaderText = "Password";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.Visible = false;
+            // 
             // ManageUsers
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -266,10 +226,7 @@
             Controls.Add(lastName);
             Controls.Add(firstName);
             Controls.Add(userId);
-            Controls.Add(label1);
             Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(searchTextBox);
             Controls.Add(dataGridView1);
             Name = "ManageUsers";
             Text = "ManageUsers";
@@ -288,10 +245,7 @@
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
         private BindingSource userBindingSource;
-        private TextBox searchTextBox;
-        private Button button1;
         private Button button2;
-        private Label label1;
         private TextBox userId;
         private TextBox firstName;
         private TextBox lastName;
@@ -303,5 +257,10 @@
         private Button button_1;
         private TextBox password;
         private Label label6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }

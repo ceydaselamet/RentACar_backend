@@ -35,25 +35,6 @@ namespace WinFormsApp3
             dataGridView1.DataSource = users.Data;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            /*
-            string searchText = searchTextBox.Text.Trim();
-
-            // GridView'deki verileri DataTable'a al
-            DataTable dataTable = dataGridView1.DataSource;
-
-            // Eşleşen verileri filtrele
-            DataRow[] matchingRows = dataTable.Select($"FirstName = '{searchText}' OR LastName = '{searchText}' OR Email = '{searchText}'", "Column1");
-
-            // Sonuçları yeni bir DataTable'a aktar
-            DataTable resultTable = matchingRows.Any() ? matchingRows.CopyToDataTable() : dataTable.Clone();
-
-            // Sonuçları GridView'e bağla
-            dataGridView1.DataSource = resultTable;
-            */
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             LoadData();
@@ -74,40 +55,6 @@ namespace WinFormsApp3
             LoadData();
         }
 
-        //Düzenleme
-        private void button4_Click(object sender, EventArgs e)
-        {
-            User userToUpdate = new User()
-            {
-                FirstName = firstName.Text,
-                LastName = lastName.Text,
-                Email = email.Text,
-                Password = password.Text
-            };
-            _userService.Update(userToUpdate);
-            MessageBox.Show("Kullanıcı başarıyla güncellendi.");
-            LoadData();
-        }
-
-        //Silme
-        private void button3_Click(object sender, EventArgs e)
-        {
-            User userToDelete = new User()
-            {
-                FirstName = firstName.Text,
-                LastName = lastName.Text,
-                Email = email.Text,
-                Password = password.Text
-            };
-            DialogResult result = MessageBox.Show("Bu kullanıcıyı silmek istediğinizden emin misiniz?", "Kullanıcı Silme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                _userService.Delete(userToDelete);
-                MessageBox.Show("Kullanıcı başarıyla silindi.");
-                LoadData();
-            }
-        }
         private void FillFormFromGrid(int e)
         {
             if (e >= 0 && e < dataGridView1.Rows.Count)
