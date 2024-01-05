@@ -247,7 +247,7 @@ namespace WinFormsApp3
             stream.Close();
             stream.Dispose();
 
-            return downloadUrl.ToString();
+            return "C://Users/Samet/Desktop/RentACar/CarImages" + downloadUrl.ToString().Substring(70);
         }
 
         // resmin bilgisayardaki konumunu döndürür.
